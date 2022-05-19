@@ -18,7 +18,7 @@ export default function Product({
       <div className="product-info">
         <div className="price">
           <p className="price-big">{priceWhole}</p>
-          <p className="price-low">{priceFraction}</p>
+          <p className="price-low">{priceFraction} €</p>
         </div>
         <p className="product-title">{info}</p>
       </div>
@@ -34,7 +34,7 @@ Product.propTypes = {
   title: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
   info: PropTypes.string.isRequired,
-  priceWhole: PropTypes.string.isRequired,
-  priceFraction: PropTypes.string.isRequired,
+  priceWhole: PropTypes.number.isRequired,
+  priceFraction: PropTypes.number.isRequired,
   linkTitle: PropTypes.string.isRequired,
 };

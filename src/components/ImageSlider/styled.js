@@ -10,6 +10,7 @@ export const Section = styled.section`
   .image {
     width: 100%;
     height: 100%;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 50), transparent);
   }
   .right-arrow {
     position: absolute;

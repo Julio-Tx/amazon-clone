@@ -39,9 +39,8 @@ export const Prod = styled.div`
   }
 
   img {
-    max-height: 200px;
+    max-height: 172px;
     width: 100%;
-    object-fit: contain;
     object-fit: contain;
   }
 `;

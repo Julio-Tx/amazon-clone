@@ -11,7 +11,7 @@ export const Container = styled.div`
 
   img {
     width: 100px;
-    margin: 5px 0px 0px -5px;
+    margin: 5px -10px 0px -5px;
   }
 
   .logo {
@@ -66,7 +66,7 @@ export const Container = styled.div`
   .nav-item-cart {
     display: flex;
     align-items: center;
-    margin: 5px 20px 0px 10px;
+    margin: 16px 20px 0px 10px;
     color: white;
   }
   .cart-count {

@@ -2,6 +2,7 @@ import React from 'react';
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
+import { Link } from 'react-router-dom';
 
 import AzamonLogo from '../../images/azamon-logo.png';
 import { Container } from './styled';
@@ -9,9 +10,11 @@ import { Container } from './styled';
 export default function Header() {
   return (
     <Container>
-      <div className="logo">
-        <img src={AzamonLogo} alt="logo" />
-      </div>
+      <Link to="/">
+        <div className="logo">
+          <img src={AzamonLogo} alt="logo" />
+        </div>
+      </Link>
       <div className="search-div">
         <input type="text" className="search-input" />
         <SearchIcon className="search-icon" />
@@ -25,10 +28,12 @@ export default function Header() {
           <span className="nav-item01">Your</span>
           <span className="nav-item02">Shop</span>
         </div>
-        <div className="nav-item-cart">
-          <ShoppingCartIcon />
-          <span className="nav-item02 cart-count">0</span>
-        </div>
+        <Link to="/checkout">
+          <div className="nav-item-cart">
+            <ShoppingCartIcon />
+            <span className="nav-item02 cart-count">0</span>
+          </div>
+        </Link>
       </div>
     </Container>
   );
