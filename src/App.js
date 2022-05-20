@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Checkout from './pages/Checkout';
+import ProductPage from './pages/ProductPage';
 
 import GlobalStyle from './styles/GlobalStyle';
 
@@ -28,6 +29,15 @@ function App() {
               <>
                 <Header />
                 <Checkout />
+              </>
+            }
+          />
+          <Route
+            path="/product/:id"
+            element={
+              <>
+                <Header />
+                <ProductPage />
               </>
             }
           />

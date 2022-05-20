@@ -1,32 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, Row, Rows, LogBox } from './styled';
 import ImageSlider from '../../components/ImageSlider';
 import Product from '../../components/Product';
 import Stand from '../../components/Stand';
 
+import productList from '../../products-list.json';
+
 export default function Home() {
+  const [products, setProducts] = useState([]);
+
+  function getProducts() {
+    setProducts(productList);
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <Container>
       <ImageSlider />
       <Rows>
         <Row>
-          <Product
-            title="Ofertas Flash"
-            imgSrc="https://m.media-amazon.com/images/I/41zll3jUC4L._SY500__AC_SY230_.jpg"
-            info="Poupe em SAGUARO e mais"
-            priceWhole={36}
-            priceFraction={99}
-            linkTitle="Ver mais"
-          />
-          <Product
-            title="Oferta top"
-            info="Poupe em Phillips e mais"
-            priceWhole={27}
-            priceFraction={99}
-            imgSrc="https://m.media-amazon.com/images/I/71szVWxXw-L._AC_UL480_FMwebp_QL65_.jpg"
-            linkTitle="Descubra todas as  ofertas"
-          />
+          {products.map((product) => (
+            <Product
+              key={product.id}
+              id={product.id}
+              title={product.title}
+              imgSrc={product.imgSrc}
+              info={product.info}
+              priceWhole={product.priceWhole}
+              priceFraction={product.priceFraction}
+              linkTitle={product.linkTitle}
+            />
+          ))}
           <Stand
             title="Descubra o Amazon Outlet"
             imgSrc="https://images-eu.ssl-images-amazon.com/images/G/30/AmazonServices/Site/US/Product/FBA/Outlet/Merchandising/ES_Outlet_OD_DSC_379x304_Dec_2020._SY304_CB413249589_.jpg"
