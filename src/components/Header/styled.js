@@ -45,6 +45,7 @@ export const Container = styled.div`
     padding: 5px;
     height: 22px !important;
     background-color: #ff9f00;
+    cursor: pointer;
   }
   .nav {
     display: flex;
@@ -55,6 +56,7 @@ export const Container = styled.div`
     flex-direction: column;
     margin: 10px 10px 10px 10px;
     color: white;
+    cursor: pointer;
   }
   .nav-item01 {
     font-size: 11px;

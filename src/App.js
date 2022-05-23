@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Checkout from './pages/Checkout';
 import ProductPage from './pages/ProductPage';
+import Page404 from './pages/Page404';
 
 import GlobalStyle from './styles/GlobalStyle';
 
@@ -38,6 +39,15 @@ function App() {
               <>
                 <Header />
                 <ProductPage />
+              </>
+            }
+          />
+          <Route
+            path="/404"
+            element={
+              <>
+                <Header />
+                <Page404 />
               </>
             }
           />

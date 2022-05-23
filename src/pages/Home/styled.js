@@ -34,5 +34,6 @@ export const LogBox = styled.div`
     width: 100%;
     height: 30px;
     border-radius: 5px;
+    cursor: pointer;
   }
 `;

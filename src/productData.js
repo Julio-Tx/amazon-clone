@@ -1,8 +1,3 @@
-import saguaroSmall from './images/saguaro1.jpg';
-import saguaroLarge from './images/saguaro2.jpg';
-import phillipsSmall from './images/phillips1.jpg';
-import phillipsLarge from './images/phillips2.jpg';
-
 export const ProductList = [
   {
     id: '1',
@@ -13,11 +8,23 @@ export const ProductList = [
     imgSrc:
       'https://m.media-amazon.com/images/I/41zll3jUC4L._SY500__AC_SY230_.jpg',
     info: 'Poupe em SAGUARO e mais',
-    priceWhole: '36',
-    priceFraction: '99',
+    priceWhole: 36,
+    priceFraction: 99,
     linkTitle: 'Ver mais',
-    imgSmall: saguaroSmall,
-    imgLarge: saguaroLarge,
+    imgSmall: [
+      'https://m.media-amazon.com/images/I/71aEDVGUsBL._AC_UX625_.jpg',
+      'https://m.media-amazon.com/images/I/71LGfLDn7vL._AC_UY695_.jpg',
+      'https://m.media-amazon.com/images/I/81CPlQyMPFL._AC_UY695_.jpg',
+    ],
+    imgLarge: [
+      'https://m.media-amazon.com/images/I/71aEDVGUsBL._AC_UL1500_.jpg',
+      'https://m.media-amazon.com/images/I/71LGfLDn7vL._AC_UL1500_.jpg',
+      'https://m.media-amazon.com/images/I/81CPlQyMPFL._AC_UL1500_.jpg',
+    ],
+    brand: 'Saguaro',
+    color: 'Black',
+    weight: '0.104',
+    nameOfProduct: 'Barefoot Sapatilhas de trail running',
     rating: 10.101,
   },
   {
@@ -27,13 +34,25 @@ export const ProductList = [
     description:
       'Philips OneBlade Pro Cara Corpo QP6650/30 Aparador de barba recarregável com pente guia para o corpo, pente de precisão de 14 comprimentos, base de carregamento e capa de viagem, cor cromada',
     info: 'Poupe em Phillips e mais',
-    priceWhole: '93',
-    priceFraction: '95',
+    priceWhole: 93,
+    priceFraction: 95,
     imgSrc:
       'https://m.media-amazon.com/images/I/71szVWxXw-L._AC_UL480_FMwebp_QL65_.jpg',
     linkTitle: 'Descubra todas as  ofertas',
-    imgSmall: phillipsSmall,
-    imgLarge: phillipsLarge,
+    imgSmall: [
+      'https://m.media-amazon.com/images/I/71szVWxXw-L._AC_SX679_.jpg',
+      'https://m.media-amazon.com/images/I/71cqb0nl1FL._AC_SX679_.jpg',
+      'https://m.media-amazon.com/images/I/616TWdwlzwL._AC_SX679_.jpg',
+    ],
+    imgLarge: [
+      'https://m.media-amazon.com/images/I/71szVWxXw-L._AC_SL1500_.jpg',
+      'https://m.media-amazon.com/images/I/71cqb0nl1FL._AC_SL1500_.jpg',
+      'https://m.media-amazon.com/images/I/616TWdwlzwL._AC_SL1500_.jpg',
+    ],
+    brand: 'Phillips',
+    color: 'Cromado',
+    weight: '0.4',
+    nameOfProduct: 'Philips OneBlade Pro Face e corpo',
     rating: 1.914,
   },
 ];

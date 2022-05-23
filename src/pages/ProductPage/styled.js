@@ -44,28 +44,45 @@ export const AmazonFashion = styled.div`
 
 export const Container = styled.div`
   padding: 0 0;
-  margin-top: 10px;
-  .category {
-    margin: 5px 0px 20px 30px;
-    font-size: 9pt;
+  margin-top: 15px;
+
+  a:hover {
+    color: red;
   }
   .div-main {
     display: flex;
   }
   .div-left {
     position: relative;
-    width: 40%;
-    margin-right: 20px;
+    width: 35%;
+    margin-right: 80px;
 
     p {
-      margin-top: 5px;
+      margin-top: 10px;
       text-align: center;
     }
   }
-  .div-right {
-    width: 45%;
-    height: 800px;
-    margin-left: 20px;
+  .mini-images {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    img {
+      width: 40px;
+      margin: 10px;
+    }
+    img:hover {
+      box-shadow: 0 0 0.5em #ff9f00;
+      border: 1px solid #ff9f00;
+    }
+    .img-selected {
+      box-shadow: 0 0 0.5em #ff9f00;
+      border: 1px solid #ff9f00;
+    }
+  }
+  .div-middle {
+    width: 35%;
+    height: 600px;
+    margin-right: 10px;
 
     .div-right-top {
       border-bottom: 1px solid #ddd;
@@ -78,6 +95,7 @@ export const Container = styled.div`
     }
     a:hover {
       text-decoration: underline;
+      color: #ff9f00;
     }
   }
   .description {
@@ -108,17 +126,84 @@ export const Container = styled.div`
   }
   .price-big {
     font-size: 25pt;
-    font-weight: 500;
+    font-weight: 480;
     margin-top: 0px;
   }
 
   .prime-icon {
     width: 60px;
+    margin-bottom: 0;
   }
-  .div-addToCart {
-    width: 15%;
-    margin: 20px;
+  .iva {
+    font-size: 11pt;
+  }
+  .div-middle-center {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .div-middle-bottom {
+    display: flex;
+  }
+  .specs-left {
+    font-weight: 700;
+    font-size: 11pt;
+  }
+  .specs-right {
+    font-size: 11pt;
+    margin-left: 20px;
+  }
+
+  .div-right {
+    width: 13%;
+    margin: 20px 0px 0px 20px;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 15px;
+    padding: 20px 15px;
+    height: 300px;
+
+    .price {
+      margin-top: -5px;
+      margin-bottom: -35px;
+    }
+    .price-big {
+      margin-top: -5px;
+    }
+    a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 11pt;
+      color: #007199;
+    }
+    a:hover {
+      color: #ff9f00;
+    }
+    p {
+      margin-top: 0px;
+    }
+    span {
+      font-weight: 600;
+    }
+    .location {
+      font-size: 11pt;
+      margin-bottom: -10;
+    }
+    .stock {
+      margin-top: 10px;
+      color: green;
+      font-weight: 600;
+    }
+    select {
+      padding: 4px;
+      margin-left: 4px;
+    }
+    button {
+      margin-top: 10px;
+      background-color: #ffd814;
+      border: none;
+      width: 100%;
+      height: 30px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
   }
 `;
