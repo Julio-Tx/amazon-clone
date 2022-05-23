@@ -5,13 +5,13 @@ import ImageSlider from '../../components/ImageSlider';
 import Product from '../../components/Product';
 import Stand from '../../components/Stand';
 
-import productList from '../../products-list.json';
+import { ProductList } from '../../productData';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
 
   function getProducts() {
-    setProducts(productList);
+    setProducts(ProductList);
   }
 
   useEffect(() => {
