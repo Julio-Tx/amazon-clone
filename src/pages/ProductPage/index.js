@@ -4,6 +4,7 @@ import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import ReactImageMagnify from 'react-image-magnify';
 
+import PrimeIcon from '../../images/prime-icon.png';
 import { ProductList } from '../../productData';
 import { AmazonFashion, Container } from './styled';
 
@@ -79,7 +80,7 @@ function ProductPage() {
                     height: 1433,
                   },
                   enlargedImageContainerDimensions: {
-                    width: '155%',
+                    width: '157%',
                     height: '105%',
                   },
                 }}
@@ -104,6 +105,18 @@ function ProductPage() {
                 <span>|</span>
                 <p>{product.rating} avaliações</p>
               </div>
+            </div>
+            <div className="div-right-bottom">
+              <div className="price">
+                <p className="price-big">{product.priceWhole}</p>
+                <p className="price-low">{product.priceFraction} €</p>
+              </div>
+              <img className="prime-icon" src={PrimeIcon} alt="prime icon" />
+              <p className="iva">
+                Por favor verifique o preço final do produto durante o processo
+                de compra, pois a taxa de IVA que corresponde à sua morada de
+                entrega apenas será calculada nesse momento.
+              </p>
             </div>
           </div>
           <div className="div-addToCart"></div>

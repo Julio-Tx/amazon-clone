@@ -65,6 +65,7 @@ export const Container = styled.div`
   .div-right {
     width: 45%;
     height: 800px;
+    margin-left: 20px;
 
     .div-right-top {
       border-bottom: 1px solid #ddd;
@@ -97,6 +98,23 @@ export const Container = styled.div`
     }
   }
 
+  .price {
+    display: flex;
+    margin: 10px 0px -25px 0px;
+  }
+  .price-low {
+    font-size: 10pt;
+    margin-top: 7px;
+  }
+  .price-big {
+    font-size: 25pt;
+    font-weight: 500;
+    margin-top: 0px;
+  }
+
+  .prime-icon {
+    width: 60px;
+  }
   .div-addToCart {
     width: 15%;
     margin: 20px;
