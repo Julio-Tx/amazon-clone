@@ -8,6 +8,7 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import PrimeIcon from '../../images/prime-icon.png';
 import { ProductList } from '../../productData';
 import { AmazonFashion, Container } from './styled';
+import { useStateValue } from '../../StateProvider';
 
 function ProductPage() {
   const { id } = useParams();
@@ -27,6 +28,22 @@ function ProductPage() {
     setSmallImage(product.imgSmall[2]);
     setLargeImage(product.imgLarge[2]);
   }
+
+  const [state, dispatch] = useStateValue();
+  console.log(state);
+
+  const addToCart = () => {
+    dispatch({
+      type: 'ADD_TO_CART',
+      item: {
+        id,
+        image: product.imgSrc,
+        price: `${product.priceWhole}.${product.priceFraction}`,
+      },
+    });
+  };
+
+  // get date of delivering
   const today = new Date();
   const afterTomorrow = new Date(today);
   afterTomorrow.setDate(afterTomorrow.getDate() + 2);
@@ -35,8 +52,8 @@ function ProductPage() {
     month: 'long',
     day: 'numeric',
   };
-
   const date = afterTomorrow.toLocaleDateString('pt-PT', options);
+
   return (
     <div>
       <AmazonFashion>
@@ -208,7 +225,9 @@ function ProductPage() {
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
-                <button type="button">Adicionar ao carrinho</button>
+                <button type="button" onClick={addToCart}>
+                  Adicionar ao carrinho
+                </button>
               </form>
             </div>
           </div>

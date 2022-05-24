@@ -20,7 +20,6 @@ export const AmazonFashion = styled.div`
     color: white;
     text-decoration: none;
     color: black;
-    width: 50px;
   }
   img {
     height: 50px;

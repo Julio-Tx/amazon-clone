@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 
 import AzamonLogo from '../../images/azamon-logo.png';
 import { Container } from './styled';
+import { useStateValue } from '../../StateProvider';
 
 export default function Header() {
+  const [{ cart }] = useStateValue();
+
   return (
     <Container>
       <Link to="/">
@@ -31,7 +34,7 @@ export default function Header() {
         <Link to="/checkout">
           <div className="nav-item-cart">
             <ShoppingCartIcon />
-            <span className="nav-item02 cart-count">0</span>
+            <span className="nav-item02 cart-count">{cart.length}</span>
           </div>
         </Link>
       </div>

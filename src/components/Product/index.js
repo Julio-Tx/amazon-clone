@@ -36,8 +36,8 @@ Product.propTypes = {
   title: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
   info: PropTypes.string.isRequired,
-  priceWhole: PropTypes.number.isRequired,
-  priceFraction: PropTypes.number.isRequired,
+  priceWhole: PropTypes.string.isRequired,
+  priceFraction: PropTypes.string.isRequired,
   linkTitle: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
