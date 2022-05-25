@@ -1,28 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import { Container } from './styled';
-import { ProductList } from '../../productData';
 import PrimeIcon from '../../images/prime-icon.png';
 
-function ProductCheckout() {
-  const id = '1';
-  const product = ProductList.find((x) => x.id === id);
-
+function ProductCheckout({
+  id,
+  name,
+  nameOfProduct,
+  imgSmall,
+  priceWhole,
+  priceFraction,
+  color,
+}) {
   return (
     <div>
       <Container>
         <div className="img-product">
-          <img src={product.imgSmall} alt={product.name} />
+          <img src={imgSmall} alt={name} />
         </div>
         <div className="product-info">
-          <Link to={`/product/${product.id}`}>
-            <span className="name">{product.nameOfProduct}</span>
+          <Link to={`/product/${id}`}>
+            <span className="name">{nameOfProduct}</span>
           </Link>
           <div className="price">
             <span className="cent">€</span>
-            <span className="eur">{product.priceWhole}</span>
-            <span className="cent">{product.priceFraction}</span>
+            <span className="eur">{priceWhole}</span>
+            <span className="cent">{priceFraction}</span>
           </div>
           <span className="stock">Em stock</span>
           <div className="prime-icon">
@@ -34,7 +39,7 @@ function ProductCheckout() {
           </div>
           <div className="product-color">
             <h4>Color: </h4>
-            <span>{product.color}</span>
+            <span>{color}</span>
           </div>
           <div className="product-footer">
             <div className="select-wrap">
@@ -58,5 +63,13 @@ function ProductCheckout() {
     </div>
   );
 }
-
+ProductCheckout.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  nameOfProduct: PropTypes.string.isRequired,
+  imgSmall: PropTypes.string.isRequired,
+  priceWhole: PropTypes.string.isRequired,
+  priceFraction: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+};
 export default ProductCheckout;

@@ -16,6 +16,8 @@ function ProductPage() {
   const [smallImage, setSmallImage] = useState(product.imgSmall[0]);
   const [largeImage, setLargeImage] = useState(product.imgLarge[0]);
 
+  const [qtd, setQtd] = useState(1);
+
   function setImage0() {
     setSmallImage(product.imgSmall[0]);
     setLargeImage(product.imgLarge[0]);
@@ -30,17 +32,29 @@ function ProductPage() {
   }
 
   const [state, dispatch] = useStateValue();
+  // eslint-disable-next-line no-console
   console.log(state);
 
+  function handleSelect(e) {
+    setQtd(e.target.value);
+  }
+
   const addToCart = () => {
-    dispatch({
-      type: 'ADD_TO_CART',
-      item: {
-        id,
-        image: product.imgSrc,
-        price: `${product.priceWhole}.${product.priceFraction}`,
-      },
-    });
+    for (let i = 0; i < qtd; i += 1) {
+      dispatch({
+        type: 'ADD_TO_CART',
+        item: {
+          id,
+          name: product.name,
+          nameOfProduct: product.nameOfProduct,
+          image: product.imgSrc,
+          price: `${product.priceWhole}.${product.priceFraction}`,
+          priceWhole: product.priceWhole,
+          priceFraction: product.priceFraction,
+          color: product.color,
+        },
+      });
+    }
   };
 
   // get date of delivering
@@ -217,8 +231,8 @@ function ProductPage() {
 
               <form>
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor="cars">Quantidade:</label>
-                <select name="quantity">
+                <label htmlFor="qtd">Quantidade:</label>
+                <select value={qtd} onChange={handleSelect}>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
