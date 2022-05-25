@@ -8,6 +8,7 @@ function Checkout() {
   const [{ cart }] = useStateValue();
   let totalPrice = 0.0;
 
+  // price calculation
   function sumPrice() {
     for (let i = 0; i < cart.length; i += 1) {
       totalPrice += parseFloat(cart[i].price);
@@ -18,7 +19,6 @@ function Checkout() {
   const totalSplited = totalString.split('.');
   const priceWhole = totalSplited[0];
   const priceFraction = totalSplited[1];
-
   return (
     <Container>
       <div className="div-left">
@@ -38,7 +38,7 @@ function Checkout() {
           />
         ))}
         <div className="footer">
-          <span>Subtotal (produtos):</span>
+          <span>Subtotal ({cart.length} produtos):</span>
           <div className="price">
             <span className="cent">€</span>
             <span className="eur">{priceWhole}</span>
@@ -49,7 +49,7 @@ function Checkout() {
 
       <div className="div-right">
         <div className="subtotal">
-          <span>Subtotal (produtos):</span>
+          <span>Subtotal ({cart.length} produtos):</span>
           <div className="price">
             <span className="cent">€</span>
             <span className="eur">{priceWhole}</span>

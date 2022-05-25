@@ -63,7 +63,7 @@ export const Container = styled.div`
 
   .div-right {
     padding: 20px;
-    width: 18%;
+    width: 19%;
     height: 80px;
     margin: 20px 30px 20px 0px;
     background-color: white;

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Container } from './styled';
 import PrimeIcon from '../../images/prime-icon.png';
+import { useStateValue } from '../../StateProvider';
 
 function ProductCheckout({
   id,
@@ -14,6 +15,15 @@ function ProductCheckout({
   priceFraction,
   color,
 }) {
+  const [dispatch] = useStateValue();
+
+  function removeFromCart() {
+    dispatch({
+      type: 'REMOVE_FROM_CART',
+      id,
+    });
+  }
+
   return (
     <div>
       <Container>
@@ -54,7 +64,9 @@ function ProductCheckout({
             </div>
             <div className="delete">
               <div>
-                <a href="/#">Apagar</a>
+                <a href="/checkout" onClick={{ removeFromCart }}>
+                  Apagar
+                </a>
               </div>
             </div>
           </div>
