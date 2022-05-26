@@ -15,7 +15,8 @@ function ProductCheckout({
   priceFraction,
   color,
 }) {
-  const [dispatch] = useStateValue();
+  // eslint-disable-next-line no-unused-vars
+  const [state, dispatch] = useStateValue();
 
   function removeFromCart() {
     dispatch({
@@ -64,9 +65,9 @@ function ProductCheckout({
             </div>
             <div className="delete">
               <div>
-                <a href="/checkout" onClick={{ removeFromCart }}>
+                <button type="button" onClick={removeFromCart}>
                   Apagar
-                </a>
+                </button>
               </div>
             </div>
           </div>

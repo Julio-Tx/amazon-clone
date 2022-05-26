@@ -94,6 +94,11 @@ export const Container = styled.div`
             color: #007199;
           }
         }
+        button {
+          border: none;
+          background-color: white;
+          cursor: pointer;
+        }
       }
     }
     a {

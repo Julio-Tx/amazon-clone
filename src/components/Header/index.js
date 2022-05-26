@@ -23,10 +23,12 @@ export default function Header() {
         <SearchIcon className="search-icon" />
       </div>
       <div className="nav">
-        <div className="nav-item">
-          <span className="nav-item01">Hello Guest</span>
-          <span className="nav-item02">Sign In</span>
-        </div>
+        <Link to="/login">
+          <div className="nav-item">
+            <span className="nav-item01">Hello Guest</span>
+            <span className="nav-item02">Sign In</span>
+          </div>
+        </Link>
         <div className="nav-item">
           <span className="nav-item01">Your</span>
           <span className="nav-item02">Shop</span>

@@ -31,9 +31,8 @@ function ProductPage() {
     setLargeImage(product.imgLarge[2]);
   }
 
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useStateValue();
-  // eslint-disable-next-line no-console
-  console.log(state);
 
   function handleSelect(e) {
     setQtd(e.target.value);

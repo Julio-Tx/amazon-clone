@@ -30,5 +30,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/self-closing-comp': 0,
     'jsx-a11y/control-has-associated-label': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
   },
 };
