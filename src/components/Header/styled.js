@@ -9,6 +9,10 @@ export const Container = styled.div`
   top: 0;
   z-index: 100;
 
+  a {
+    text-decoration: none;
+  }
+
   img {
     width: 100px;
     margin: 5px -10px 0px -5px;
