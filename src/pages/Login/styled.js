@@ -6,10 +6,10 @@ export const Container = styled.div`
 
   img {
     width: 100px;
-
     margin: 15px auto 0px 47%;
   }
 `;
+export const Button = styled.button``;
 
 export const Form = styled.form`
   width: 300px;
@@ -45,6 +45,7 @@ export const Form = styled.form`
   input:focus {
     border: 1px solid #ff9f00;
     box-shadow: 0 0 0.5em #ff9f00;
+    outline: none;
   }
   button {
     height: 30px;
@@ -61,6 +62,36 @@ export const Form = styled.form`
     margin-top: 20px;
     margin-bottom: 15px;
     font-size: 9pt;
+  }
+`;
+
+export const Divider = styled.div`
+  height: 0.4px;
+  width: 340px;
+  margin: 30px auto -18px auto;
+  background: #ddd;
+`;
+
+export const DividerText = styled.span`
+  position: absolute;
+  font-size: 10pt;
+  margin: 8px auto 0px 43.5%;
+  padding: 0px 5px;
+  color: #737373;
+  background-color: white;
+`;
+
+export const ButtonRegister = styled.button`
+  width: 343px;
+  margin: 40px auto 0px 38.89%;
+  height: 30px;
+  border: 1px solid #949494;
+  background-image: linear-gradient(#f6f7f9, #e7e9ec);
+  border-radius: 3px;
+  cursor: pointer;
+
+  :hover {
+    filter: brightness(0.95);
   }
 `;
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Prod } from './styled';
 
@@ -31,13 +30,3 @@ export default function Product({
     </Prod>
   );
 }
-
-Product.propTypes = {
-  title: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
-  info: PropTypes.string.isRequired,
-  priceWhole: PropTypes.string.isRequired,
-  priceFraction: PropTypes.string.isRequired,
-  linkTitle: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-};

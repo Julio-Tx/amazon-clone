@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import ReactImageMagnify from 'react-image-magnify';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 import PrimeIcon from '../../images/prime-icon.png';
 import { ProductList } from '../../productData';
 import { AmazonFashion, Container } from './styled';
 import { useStateValue } from '../../StateProvider';
+import { auth } from '../../DB/firebase';
 
 function ProductPage() {
   const { id } = useParams();
   const product = ProductList.find((x) => x.id === id);
+
+  const navigate = useNavigate();
   const [smallImage, setSmallImage] = useState(product.imgSmall[0]);
   const [largeImage, setLargeImage] = useState(product.imgLarge[0]);
+  const [user, loading, error] = useAuthState(auth);
 
   const [qtd, setQtd] = useState(1);
 
@@ -39,6 +44,10 @@ function ProductPage() {
   }
 
   const addToCart = () => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
     for (let i = 0; i < qtd; i += 1) {
       dispatch({
         type: 'ADD_TO_CART',

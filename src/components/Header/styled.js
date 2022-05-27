@@ -64,9 +64,11 @@ export const Container = styled.div`
   }
   .nav-item01 {
     font-size: 11px;
+    padding: 0;
   }
   .nav-item02 {
     font-size: 14px;
+    margin-top: -3px;
     font-weight: 700;
   }
   .nav-item-cart {
@@ -78,4 +80,12 @@ export const Container = styled.div`
   .cart-count {
     margin: 0 10px;
   }
+`;
+
+export const ButtonLogout = styled.button`
+  border: none;
+  background: none;
+  color: white;
+  padding: 0;
+  cursor: pointer;
 `;

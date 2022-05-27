@@ -9,6 +9,16 @@ export const Container = styled.div`
 
     margin: 15px auto 0px 47%;
   }
+
+  a {
+    cursor: pointer;
+    color: #007199;
+    text-decoration: none;
+  }
+  a:hover {
+    color: orange;
+    text-decoration: underline;
+  }
 `;
 
 export const Form = styled.form`
@@ -45,6 +55,7 @@ export const Form = styled.form`
   input:focus {
     border: 1px solid #ff9f00;
     box-shadow: 0 0 0.5em #ff9f00;
+    outline: none;
   }
   button {
     height: 30px;
@@ -90,7 +101,7 @@ export const FakeLink = styled.span`
   cursor: pointer;
   color: #007199;
   :hover {
-    color: orange;
+    color: #ddd;
     text-decoration: underline;
   }
 `;

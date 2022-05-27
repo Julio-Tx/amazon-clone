@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Container } from './styled';
 
 export default function Stand({ title, imgSrc, linkTitle }) {
@@ -11,9 +10,3 @@ export default function Stand({ title, imgSrc, linkTitle }) {
     </Container>
   );
 }
-
-Stand.propTypes = {
-  title: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
-  linkTitle: PropTypes.string.isRequired,
-};

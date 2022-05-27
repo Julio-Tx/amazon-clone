@@ -20,18 +20,16 @@ export default function Slider() {
     <Section>
       <ArrowBackIosNewIcon className="left-arrow" onClick={prevSlide} />
       <ArrowForwardIosIcon className="right-arrow" onClick={nextSlide} />
-      {Data.map((slide, index) => {
-        return (
-          <div
-            className={index === current ? 'slide active' : 'slide'}
-            key={slide.id}
-          >
-            {index === current && (
-              <img src={slide.image} alt="slides" className="image" />
-            )}
-          </div>
-        );
-      })}
+      {Data.map((slide, index) => (
+        <div
+          className={index === current ? 'slide active' : 'slide'}
+          key={slide.id}
+        >
+          {index === current && (
+          <img src={slide.image} alt="slides" className="image" />
+          )}
+        </div>
+      ))}
     </Section>
   );
 }

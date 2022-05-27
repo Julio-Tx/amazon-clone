@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import { Container } from './styled';
@@ -76,13 +75,4 @@ function ProductCheckout({
     </div>
   );
 }
-ProductCheckout.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  nameOfProduct: PropTypes.string.isRequired,
-  imgSmall: PropTypes.string.isRequired,
-  priceWhole: PropTypes.string.isRequired,
-  priceFraction: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-};
 export default ProductCheckout;

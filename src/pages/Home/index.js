@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 
-import { Container, Row, Rows, LogBox } from './styled';
+import { auth } from '../../DB/firebase';
+import {
+  Container, Row, Rows, LogBox,
+} from './styled';
 import ImageSlider from '../../components/ImageSlider';
 import Product from '../../components/Product';
 import Stand from '../../components/Stand';
@@ -9,6 +14,7 @@ import { ProductList } from '../../productData';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [user, loading, error] = useAuthState(auth);
 
   function getProducts() {
     setProducts(ProductList);
@@ -40,10 +46,16 @@ export default function Home() {
             imgSrc="https://images-eu.ssl-images-amazon.com/images/G/30/AmazonServices/Site/US/Product/FBA/Outlet/Merchandising/ES_Outlet_OD_DSC_379x304_Dec_2020._SY304_CB413249589_.jpg"
             linkTitle="Ver mais"
           />
-          <LogBox>
-            <h3>Inicie sessão para obter a melhor experiência</h3>
-            <button type="button">Inicie sessão com segurança</button>
-          </LogBox>
+          {!user ? (
+            <LogBox>
+              <h3>Inicie sessão para obter a melhor experiência</h3>
+              <Link to="/login">
+                <button type="button">Inicie sessão com segurança</button>
+              </Link>
+            </LogBox>
+          )
+            : <Stand title="Ucrânia: a sua doação conta" imgSrc="https://images-eu.ssl-images-amazon.com/images/G/30/x-site/Ukraine/uk_flag_379x304._SY304_CB626377026_.jpg" linkTitle="Se puder, contribua" />}
+
         </Row>
         <Row>
           <Stand

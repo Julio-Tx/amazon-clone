@@ -12,13 +12,14 @@ const reducer = (state, action) => {
     }
     case 'REMOVE_FROM_CART': {
       const index = state.cart.findIndex(
-        (cartItem) => cartItem.id === action.id
+        (cartItem) => cartItem.id === action.id,
       );
 
       const newCart = [...state.cart];
 
-      newCart.splice(index, 1);
-
+      if (index >= 0) {
+        newCart.splice(index, 1);
+      }
       return {
         ...state,
         cart: newCart,

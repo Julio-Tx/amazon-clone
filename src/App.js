@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import './App.css';
 import Header from './components/Header';
@@ -18,33 +19,49 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={
+            element={(
               <>
                 <Header />
                 <Home />
+
               </>
-            }
+            )}
           />
           <Route
             path="/checkout"
-            element={
+            element={(
               <>
                 <Header />
                 <Checkout />
               </>
-            }
+            )}
           />
           <Route
             path="/product/:id"
-            element={
+            element={(
               <>
                 <Header />
                 <ProductPage />
               </>
-            }
+            )}
           />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/register"
+            element={(
+              <>
+                <Register />
+                <ToastContainer autoClose={3000} className="toast-container" />
+              </>
+        )}
+          />
+          <Route
+            path="/login"
+            element={(
+              <>
+                <Login /><ToastContainer autoClose={3000} className="toast-container" />
+              </>
+        )}
+          />
         </Routes>
       </BrowserRouter>
     </div>
