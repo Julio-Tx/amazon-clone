@@ -29,6 +29,7 @@ module.exports = {
     'react/prop-types': 0,
     'react/jsx-one-expression-per-line': 0,
     'no-unused-vars': 0,
+    'jsx-a11y/no-autofocus': 0,
 
   },
 };

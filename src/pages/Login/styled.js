@@ -1,20 +1,29 @@
 import styled from 'styled-components';
 
+export const Fix = styled.div`
+ margin: 0 auto;
+width: 342px;
+display: block;
+`;
 export const Container = styled.div`
   display: column;
-  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  width: 342px;
 
   img {
     width: 100px;
-    margin: 15px auto 0px 47%;
+    margin-top: 20px;
+    margin-left: 35%;
   }
 `;
 export const Button = styled.button``;
 
-export const Form = styled.form`
+export const Form = styled.div`
   width: 300px;
   border: 1px solid #ddd;
-  margin: 15px auto 0px auto;
+  margin-top: 15px;
   padding: 15px 20px 15px 20px;
   border-radius: 5px;
   .title {
@@ -68,14 +77,15 @@ export const Form = styled.form`
 export const Divider = styled.div`
   height: 0.4px;
   width: 340px;
-  margin: 30px auto -18px auto;
+  margin-top: 30px;
+  margin-bottom: -18px;
   background: #ddd;
 `;
 
 export const DividerText = styled.span`
   position: absolute;
   font-size: 10pt;
-  margin: 8px auto 0px 43.5%;
+  margin-top: 8px;
   padding: 0px 5px;
   color: #737373;
   background-color: white;
@@ -83,7 +93,7 @@ export const DividerText = styled.span`
 
 export const ButtonRegister = styled.button`
   width: 343px;
-  margin: 40px auto 0px 38.89%;
+  margin-top: 40px;
   height: 30px;
   border: 1px solid #949494;
   background-image: linear-gradient(#f6f7f9, #e7e9ec);

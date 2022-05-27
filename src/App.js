@@ -1,5 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import {
+  ToastContainer, toast, Zoom, Bounce,
+} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './App.css';
 import Header from './components/Header';
@@ -50,7 +53,7 @@ function App() {
             element={(
               <>
                 <Register />
-                <ToastContainer autoClose={3000} className="toast-container" />
+                <ToastContainer autoClose={3000} />
               </>
         )}
           />
@@ -58,7 +61,7 @@ function App() {
             path="/login"
             element={(
               <>
-                <Login /><ToastContainer autoClose={3000} className="toast-container" />
+                <Login /><ToastContainer autoClose={3000} />
               </>
         )}
           />

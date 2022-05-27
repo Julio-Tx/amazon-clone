@@ -10,6 +10,7 @@ import {
   DividerText,
   ButtonRegister,
   Button,
+  Fix,
 } from './styled';
 import AzamonLogo from '../../images/azamon-logo-black.png';
 import { auth, logInWithEmailAndPassword } from '../../DB/firebase';
@@ -29,6 +30,14 @@ function Login() {
     logInWithEmailAndPassword(email, password);
   };
 
+  const handleKeypress = (e) => {
+    e.prevent.default();
+    // it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      setSent(true);
+    }
+  };
+
   useEffect(() => {
     if (loading) {
       // maybe trigger a loading screen
@@ -38,7 +47,7 @@ function Login() {
   }, [user, loading]);
 
   return (
-    <div>
+    <Fix>
       <Container>
         <Link to="/">
           <img src={AzamonLogo} alt="Azamon logo" />
@@ -46,7 +55,7 @@ function Login() {
         <Form>
           <p className="title">Iniciar sessão</p>
           {emailSent === false ? (
-            <div>
+            <form onSubmit={setSent}>
               <label htmlFor="name">
                 E-mail
                 <input
@@ -55,15 +64,16 @@ function Login() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </label>
-              <button type="button" onClick={setSent}>
+              <button type="submit">
                 Continuar
               </button>
-            </div>
+            </form>
           ) : (
             <div>
               <label htmlFor="name">
                 Palavra-passe
                 <input
+                  autoFocus
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -86,7 +96,7 @@ function Login() {
           <ButtonRegister type="button">Criar a conta da Azamon</ButtonRegister>
         </Link>
       </Container>
-    </div>
+    </Fix>
   );
 }
 

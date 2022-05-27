@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { initializeApp } from 'firebase/app';
 import { toast } from 'react-toastify';
 import {
@@ -53,8 +54,8 @@ const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
-    toast.error(err);
-    toast.error(err.message);
+    toast.error('Usuário invalido');
+    console.log(err.message);
   }
 };
 const registerWithEmailAndPassword = async (name, email, password) => {
@@ -68,8 +69,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       email,
     });
   } catch (err) {
-    toast.error(err);
-    toast.error(err.message);
+    console.log(err);
+    console.log(err.message);
   }
 };
 const sendPasswordReset = async (email) => {

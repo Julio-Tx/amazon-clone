@@ -51,7 +51,9 @@ export default function Header() {
           <Link to="/">
             <div className="nav-item">
               <span className="nav-item01">Hello {name}</span>
-              <ButtonLogout type="button" onClick={logout}><span className="nav-item02">Logout</span></ButtonLogout>
+              <ButtonLogout type="button" onClick={logout}>
+                <span className="nav-item02">Logout</span>
+              </ButtonLogout>
             </div>
           </Link>
         )

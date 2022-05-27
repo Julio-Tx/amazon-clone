@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import { isEmail } from 'validator';
 
 import { Container, FakeLink, Form } from './styled';
 import AzamonLogo from '../../images/azamon-logo-black.png';
@@ -18,10 +19,20 @@ function Register() {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [user, loading, error] = useAuthState(auth);
 
+  let errors = 0;
+
   const register = () => {
-    if (!name) toast.error('Please enter name');
+    if (!name) { toast.error('Digite seu nome'); errors += 1; return; }
+    if (!password) { toast.error('Digite a sua senha'); errors += 1; return; }
+    if (!email) { toast.error('Digite o seu email'); errors += 1; return; }
+    if (!isEmail(email)) { toast.error('Email invalido'); errors += 1; return; }
+    if (password !== passwordConfirm) { toast.error('Senhas não coincidem'); errors += 1; return; }
+
+    if (errors > 0) { toast.error('Erro desconhecido'); return; }
+
     registerWithEmailAndPassword(name, email, password);
   };
+
   useEffect(() => {
     if (loading) return;
     if (user) navigate('/');
