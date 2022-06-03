@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
-import { isEmail } from 'validator';
+import isEmail from 'validator/lib/isEmail';
 
 import { Container, FakeLink, Form } from './styled';
 import AzamonLogo from '../../images/azamon-logo-black.png';
@@ -17,11 +17,11 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   let errors = 0;
 
-  const register = () => {
+  const register = async () => {
     if (!name) { toast.error('Digite seu nome'); errors += 1; return; }
     if (!password) { toast.error('Digite a sua senha'); errors += 1; return; }
     if (!email) { toast.error('Digite o seu email'); errors += 1; return; }
@@ -30,13 +30,17 @@ function Register() {
 
     if (errors > 0) { toast.error('Erro desconhecido'); return; }
 
-    registerWithEmailAndPassword(name, email, password);
+    try {
+      await registerWithEmailAndPassword(name, email, password);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
     if (loading) return;
     if (user) navigate('/');
-  }, [user, loading]);
+  }, [user, loading, navigate]);
 
   return (
     <div>
@@ -80,12 +84,12 @@ function Register() {
             Ao criar uma conta, aceita as <FakeLink>Condições de Uso</FakeLink>{' '}
             e o <FakeLink>Aviso de Privacidade</FakeLink> da Amazon.
           </p>
-          <div className="divider"></div>
+          <div className="divider" />
           <div className="footer">
             <span>
               Já tem uma conta? <Link to="/login">Iniciar sessão</Link>
             </span>
-            <br></br>
+            <br />
             <span>
               A fazer compras para fins profissionais?{' '}
               <FakeLink>Crie uma conta de empresa grátis</FakeLink>

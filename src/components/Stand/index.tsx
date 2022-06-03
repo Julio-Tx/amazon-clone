@@ -1,7 +1,13 @@
 import React from 'react';
 import { Container } from './styled';
 
-export default function Stand({ title, imgSrc, linkTitle }) {
+interface StandTypes {
+  title: string,
+  imgSrc: string,
+  linkTitle: string,
+}
+
+export default function Stand({ title, imgSrc, linkTitle }: StandTypes) {
   return (
     <Container>
       <h3>{title}</h3>

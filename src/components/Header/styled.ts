@@ -7,6 +7,7 @@ export const Container = styled.div`
   background-color: #131921;
   position: sticky;
   top: 0;
+  min-width: 1500px;
   z-index: 100;
 
   a {

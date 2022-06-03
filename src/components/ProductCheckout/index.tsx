@@ -1,9 +1,20 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { removeFromCart } from '../../features/cart';
 import { Container } from './styled';
 import PrimeIcon from '../../images/prime-icon.png';
-import { useStateValue } from '../../StateProvider';
+
+interface Product {
+  id: string,
+  name: string,
+  nameOfProduct: string,
+  imgSmall: string,
+  priceWhole: string,
+  priceFraction: string,
+  color: string,
+}
 
 function ProductCheckout({
   id,
@@ -13,15 +24,12 @@ function ProductCheckout({
   priceWhole,
   priceFraction,
   color,
-}) {
+}: Product) {
   // eslint-disable-next-line no-unused-vars
-  const [state, dispatch] = useStateValue();
+  const dispatch = useDispatch();
 
-  function removeFromCart() {
-    dispatch({
-      type: 'REMOVE_FROM_CART',
-      id,
-    });
+  const handleDelete = () => {
+    dispatch(removeFromCart({ id }))
   }
 
   return (
@@ -64,7 +72,7 @@ function ProductCheckout({
             </div>
             <div className="delete">
               <div>
-                <button type="button" onClick={removeFromCart}>
+                <button type="button" onClick={handleDelete}>
                   Apagar
                 </button>
               </div>

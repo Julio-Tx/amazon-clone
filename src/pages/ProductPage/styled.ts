@@ -5,7 +5,6 @@ export const AmazonFashion = styled.div`
   align-items: center;
   height: 50px;
   border-bottom: solid 1px #ddd;
-
   font-size: 9pt;
   .list {
     display: flex;
@@ -44,6 +43,8 @@ export const AmazonFashion = styled.div`
 export const Container = styled.div`
   padding: 0 0;
   margin-top: 15px;
+  
+  min-width: 1500px;
 
   a:hover {
     color: red;

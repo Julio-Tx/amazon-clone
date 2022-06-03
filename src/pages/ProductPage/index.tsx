@@ -1,79 +1,107 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import ReactImageMagnify from 'react-image-magnify';
+//mui icons
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
-import ReactImageMagnify from 'react-image-magnify';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+// firebase
 import { useAuthState } from 'react-firebase-hooks/auth';
+//redux
+import { useDispatch } from 'react-redux';
 
+import { addToCart } from '../../features/cart';
 import PrimeIcon from '../../images/prime-icon.png';
 import { ProductList } from '../../productData';
 import { AmazonFashion, Container } from './styled';
-import { useStateValue } from '../../StateProvider';
 import { auth } from '../../DB/firebase';
+import ProductType from '../../types/Product';
 
 function ProductPage() {
-  const { id } = useParams();
-  const product = ProductList.find((x) => x.id === id);
-
   const navigate = useNavigate();
-  const [smallImage, setSmallImage] = useState(product.imgSmall[0]);
-  const [largeImage, setLargeImage] = useState(product.imgLarge[0]);
-  const [user, loading, error] = useAuthState(auth);
+  const dispatch = useDispatch();
 
-  const [qtd, setQtd] = useState(1);
+  const { id } = useParams();
+  const product: ProductType = ProductList.find((x) => x.id === id)!;
 
-  function setImage0() {
-    setSmallImage(product.imgSmall[0]);
-    setLargeImage(product.imgLarge[0]);
+  const [smallPhoto, setSmallPhoto] = useState<string>(product.imgSmall[0]);
+  const [largePhoto, setLargePhoto] = useState<string>(product.imgLarge[0]);
+
+  const [user] = useAuthState(auth);
+
+  const [qtd, setQtd] = useState<number>(1);
+
+  function setPhoto0() {
+    setSmallPhoto(product.imgSmall[0]);
+    setLargePhoto(product.imgLarge[0]);
   }
-  function setImage1() {
-    setSmallImage(product.imgSmall[1]);
-    setLargeImage(product.imgLarge[1]);
+  function setPhoto1() {
+    setSmallPhoto(product.imgSmall[1]);
+    setLargePhoto(product.imgLarge[1]);
   }
-  function setImage2() {
-    setSmallImage(product.imgSmall[2]);
-    setLargeImage(product.imgLarge[2]);
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  const [state, dispatch] = useStateValue();
-
-  function handleSelect(e) {
-    setQtd(e.target.value);
+  function setPhoto2() {
+    setSmallPhoto(product.imgSmall[2]);
+    setLargePhoto(product.imgLarge[2]);
   }
 
-  const addToCart = () => {
+  function handleSelect(e: React.ChangeEvent<{ value: unknown }>) {
+    const qtd = e.target.value as number;
+    setQtd(qtd);
+  }
+
+  const handleSubmit = () => {
     if (!user) {
       navigate('/login');
-      return;
     }
     for (let i = 0; i < qtd; i += 1) {
-      dispatch({
-        type: 'ADD_TO_CART',
-        item: {
-          id,
-          name: product.name,
-          nameOfProduct: product.nameOfProduct,
-          image: product.imgSrc,
-          price: `${product.priceWhole}.${product.priceFraction}`,
-          priceWhole: product.priceWhole,
-          priceFraction: product.priceFraction,
-          color: product.color,
-        },
-      });
+      dispatch(addToCart({
+        id: product.id,
+        name: product.name,
+        rating: product.rating,
+        title: product.title,
+        info: product.info,
+        imgSmall: product.imgSmall,
+        imgLarge: product.imgLarge,
+        imgSrc: product.imgSrc,
+        price: `${product.priceWhole}.${product.priceFraction}`,
+        priceWhole: product.priceWhole,
+        priceFraction: product.priceFraction,
+        linkTitle: product.linkTitle,
+        brand: product.brand,
+        color: product.color,
+        weight: product.weight,
+        description: product.description,
+        nameOfProduct: product.nameOfProduct,
+      }))
     }
   };
+  //   for (let i = 0; i < qtd; i += 1) {
+  //     dispatch({
+  //       type: 'ADD_TO_CART',
+  //       item: {
+  //         id,
+  //         name: product.name,
+  //         nameOfProduct: product.nameOfProduct,
+  //         image: product.imgSrc,
+  //         price: `${product.priceWhole}.${product.priceFraction}`,
+  //         priceWhole: product.priceWhole,
+  //         priceFraction: product.priceFraction,
+  //         color: product.color,
+  //       },
+  //     });
+  //   }
+  // };
 
   // get date of delivering
   const today = new Date();
   const afterTomorrow = new Date(today);
   afterTomorrow.setDate(afterTomorrow.getDate() + 2);
+
   const options = {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
-  };
+  } as const;
   const date = afterTomorrow.toLocaleDateString('pt-PT', options);
 
   return (
@@ -131,20 +159,20 @@ function ProductPage() {
         <div className="div-main">
           <div className="mini-images">
             <img
-              className={smallImage === product.imgSmall[0] && 'img-selected'}
-              onMouseEnter={setImage0}
+              className={(smallPhoto === product.imgSmall[0]) ? 'img-selected' : 'img'}
+              onMouseEnter={setPhoto0}
               src={product.imgSmall[0]}
               alt="mini"
             />
             <img
-              className={smallImage === product.imgSmall[1] && 'img-selected'}
-              onMouseEnter={setImage1}
+              className={(smallPhoto === product.imgSmall[1]) ? 'img-selected' : 'img'}
+              onMouseEnter={setPhoto1}
               src={product.imgSmall[1]}
               alt="mini"
             />
             <img
-              className={smallImage === product.imgSmall[2] && 'img-selected'}
-              onMouseEnter={setImage2}
+              className={(smallPhoto === product.imgSmall[2]) ? 'img-selected' : 'img'}
+              onMouseEnter={setPhoto2}
               src={product.imgSmall[2]}
               alt="mini"
             />
@@ -155,12 +183,13 @@ function ProductPage() {
                 {...{
                   smallImage: {
                     alt: 'Wristwatch by Ted Baker London',
-                    src: smallImage,
+                    isFluidWidth: false,
+                    src: smallPhoto,
                     width: 590,
                     height: 570,
                   },
                   largeImage: {
-                    src: largeImage,
+                    src: largePhoto,
                     width: 1500,
                     height: 1433,
                   },
@@ -233,7 +262,7 @@ function ProductPage() {
                 Entrega GRÁTIS <span>{date}</span>.
               </p>
               <a href="/#" className="location">
-                <LocationOnOutlinedIcon fontSize="25" /> Enviar a Portugal
+                <LocationOnOutlinedIcon fontSize="small" /> Enviar a Portugal
               </a>
               <p className="stock">Em stock.</p>
 
@@ -247,7 +276,7 @@ function ProductPage() {
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
-                <button type="button" onClick={addToCart}>
+                <button type="button" onClick={handleSubmit}>
                   Adicionar ao carrinho
                 </button>
               </form>

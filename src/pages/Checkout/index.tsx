@@ -1,14 +1,40 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { Container } from './styled';
+import Container from './styled';
 import ProductCheckout from '../../components/ProductCheckout';
-import { useStateValue } from '../../StateProvider';
+import ProductType from '../../types/Product';
+
+interface Product {
+  id: string,
+  name: string,
+  rating: number,
+  title: string,
+  info: string,
+  imgSmall: string[],
+  imgLarge: string[],
+  imgSrc: string,
+  price: string,
+  priceWhole: string,
+  priceFraction: string,
+  linkTitle: string,
+  brand: string,
+  color: string,
+  weight: string,
+  description: string,
+  nameOfProduct: string,
+  };
 
 function Checkout() {
-  const [{ cart }] = useStateValue();
-  let totalPrice = 0.0;
+  const cartOriginal = useSelector((state: any) => state.cart.value);
+  let cart: Product[] = [...cartOriginal];
+
+  //remove initial state item 
+  cart.splice(0, 1);
 
   // price calculation
+  
+  let totalPrice = 0.0;
   function sumPrice() {
     for (let i = 0; i < cart.length; i += 1) {
       totalPrice += parseFloat(cart[i].price);
@@ -26,11 +52,11 @@ function Checkout() {
           <p>Carrinho de compras</p>
           <a href="/#">Desmarcar todos os produtos</a>
         </div>
-        {cart.map((item) => (
+        {cart.map((item: ProductType) => (
           <ProductCheckout
             id={item.id}
             name={item.name}
-            imgSmall={item.image}
+            imgSmall={item.imgSrc}
             nameOfProduct={item.nameOfProduct}
             priceWhole={item.priceWhole}
             priceFraction={item.priceFraction}

@@ -2,6 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Prod } from './styled';
 
+interface ProductType {
+  id: string,
+  title: string,
+  info: string,
+  imgSrc: string,
+  priceWhole: string,
+  priceFraction: string,
+  linkTitle: string,
+}
+
 export default function Product({
   id,
   title,
@@ -10,7 +20,7 @@ export default function Product({
   priceWhole,
   priceFraction,
   linkTitle,
-}) {
+}: ProductType) {
   return (
     <Prod>
       <h3>{title}</h3>

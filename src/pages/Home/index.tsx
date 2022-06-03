@@ -9,12 +9,13 @@ import {
 import ImageSlider from '../../components/ImageSlider';
 import Product from '../../components/Product';
 import Stand from '../../components/Stand';
+import ProductType from '../../types/Product';
 
 import { ProductList } from '../../productData';
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-  const [user, loading, error] = useAuthState(auth);
+  const [products, setProducts] = useState<Array<ProductType>>([]);
+  const [user] = useAuthState(auth);
 
   function getProducts() {
     setProducts(ProductList);
@@ -29,7 +30,7 @@ export default function Home() {
       <ImageSlider />
       <Rows>
         <Row>
-          {products.map((product) => (
+          {products.map((product: ProductType) => (
             <Product
               key={product.id}
               id={product.id}

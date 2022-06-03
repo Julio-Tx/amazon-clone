@@ -20,7 +20,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailSent, setEmailSent] = useState(false);
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   const setSent = () => {
     setEmailSent(true);
@@ -29,22 +29,13 @@ function Login() {
   const logIn = () => {
     logInWithEmailAndPassword(email, password);
   };
-
-  const handleKeypress = (e) => {
-    e.prevent.default();
-    // it triggers by pressing the enter key
-    if (e.keyCode === 13) {
-      setSent(true);
-    }
-  };
-
   useEffect(() => {
     if (loading) {
       // maybe trigger a loading screen
       return;
     }
     if (user) navigate('/');
-  }, [user, loading]);
+  }, [user, loading, navigate]);
 
   return (
     <Fix>

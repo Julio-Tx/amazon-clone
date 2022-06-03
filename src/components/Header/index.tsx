@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import {
   query, collection, getDocs, where,
 } from 'firebase/firestore';
-import { toast } from 'react-toastify';
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
@@ -12,25 +11,25 @@ import { auth, db, logout } from '../../DB/firebase';
 
 import AzamonLogo from '../../images/azamon-logo.png';
 import { Container, ButtonLogout } from './styled';
-import { useStateValue } from '../../StateProvider';
+import { useSelector } from 'react-redux';
 
 export default function Header() {
-  const [{ cart }] = useStateValue();
-  const [user, loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth as any);
   const [name, setName] = useState('');
+  const cart = useSelector((state: any) => state.cart.value);
 
-  const fetchUserName = async () => {
-    try {
-      const q = query(collection(db, 'users'), where('uid', '==', user?.uid));
-      const doc = await getDocs(q);
-      const data = doc.docs[0].data();
-      setName(data.name);
-    } catch (err) {
-      toast.error(err);
-    }
-  };
 
   useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const q = query(collection(db, 'users'), where('uid', '==', user?.uid));
+        const doc = await getDocs(q);
+        const data = doc.docs[0].data();
+        setName(data.name);
+      } catch (err) {
+        console.log(err);
+      }
+    };
     if (loading) return;
     fetchUserName();
   }, [user, loading]);
@@ -73,7 +72,7 @@ export default function Header() {
         <Link to="/checkout">
           <div className="nav-item-cart">
             <ShoppingCartIcon />
-            <span className="nav-item02 cart-count">{cart.length}</span>
+            <span className="nav-item02 cart-count">{cart.length - 1}</span>
           </div>
         </Link>
       </div>

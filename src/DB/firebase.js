@@ -20,12 +20,12 @@ import {
 } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyD1bmtLq5l1MEEOj1snnmpeVHPwAXrcR6Y',
-  authDomain: 'azamon-e6b07.firebaseapp.com',
-  projectId: 'azamon-e6b07',
-  storageBucket: 'azamon-e6b07.appspot.com',
-  messagingSenderId: '467258134268',
-  appId: '1:467258134268:web:650eb58c25610d609d1179',
+  apiKey: "AIzaSyD1bmtLq5l1MEEOj1snnmpeVHPwAXrcR6Y",
+  authDomain: "azamon-e6b07.firebaseapp.com",
+  projectId: "azamon-e6b07",
+  storageBucket: "azamon-e6b07.appspot.com",
+  messagingSenderId: "467258134268",
+  appId: "1:467258134268:web:e6b7eb2a993cf8629d1179",
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
